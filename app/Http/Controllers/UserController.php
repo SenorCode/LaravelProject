@@ -19,7 +19,7 @@ class UserController extends Controller
     public function postSignUp(Request $request)
     {
     	$this->validate($request,[
-            'emailemailemailemailemailemailemailemailemailemailemailemail']);
+            'email']);
         $email            = $request['email'];
         $first_name       = $request['first_name'];
         $password         = bcrypt($request['password']);
