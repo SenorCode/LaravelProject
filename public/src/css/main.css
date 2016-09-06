@@ -1,10 +1,10 @@
-.new-post
+.body
 {
     padding: 16px 0;
 
     border-bottom: 1px solid #ccc;
 }
-.new-post header, 
+.body header, 
 .posts header {
 	margin-bottom: 20px;
 }
