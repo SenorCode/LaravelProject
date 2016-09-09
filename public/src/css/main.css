@@ -32,16 +32,11 @@
 	margin: 0;
 }
 .success {
-	border: 1px solid green;
+	border: 1px solid #07FF2A;
 	
 	color: #03C01E;
 }
 
-.success ul{
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
 
 .error,
 .success {
