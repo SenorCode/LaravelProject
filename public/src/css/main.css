@@ -19,3 +19,31 @@
 	color: #aaa;
 	font-style: italic;
 }
+
+.error {
+	border: 1px solid #F82F2F;
+	
+	color: #B00B0B;
+}
+
+.error ul{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.success {
+	border: 1px solid green;
+	
+	color: #03C01E;
+}
+
+.success ul{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.error,
+.success {
+	text-align: center;
+}

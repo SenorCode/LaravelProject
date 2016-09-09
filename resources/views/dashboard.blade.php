@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-	
+	@include('includes.message_block')
 	<section class="row new-post">
 		<div class="col-lg-6 col-lg-offset-3">
 			<header><h3>What do you have to say?</h3></header>
