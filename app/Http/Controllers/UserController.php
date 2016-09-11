@@ -33,8 +33,8 @@ class UserController extends Controller
 
     	return redirect()->route('dashboard');
 
-
     }
+
 
     public function postSignIn(Request $request)
     {
@@ -47,5 +47,13 @@ class UserController extends Controller
             return redirect()->route('dashboard');
         }
         return redirect()->back();
+    }
+
+
+    public function getLogout()
+    {
+        Auth::logout();
+        return redirect()->route('home');
+
     }
 }

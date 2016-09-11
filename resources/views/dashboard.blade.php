@@ -22,13 +22,18 @@
 
 				<p>{{ $post->body }}</p>
 				<div class="info">
-					Posted by {{ $post->user->first_name}} on {{ $post->created_at->format('m/d/Y') }} at {{ $post->created_at->format('h:i A') }}
+					Posted by {{ $post->user->first_name}} on {{ $post->created_at->format('m/d/Y') }} - {{ $post->created_at->diffForHumans() }}
 				</div>
 				<div class="interaction">
 					<a href="#">Like</a> |
-					<a href="#">Dislike</a> |
+					<a href="#">Dislike</a> 
+					@if(Auth:: user() == $post->user)
+					|
 					<a href="#">Edit</a> |
 					<a href="{{ route('post.delete' , ['post_id' =>$post->id]) }}">Delete</a>
+
+					@endif
+					
 				</div>
 			</article>
 
