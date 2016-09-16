@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="{{ route('logout') }}">Logout</a></li>
         <li>
-          <a  aria-haspopup="true" aria-expanded="false">{{Auth::user()->first_name}}<span></span></a>
+          <a  aria-haspopup="true" aria-expanded="false">@if(Auth::user()) {{Auth::user()->first_name}} @endif</a>
           
         </li>
       </ul>

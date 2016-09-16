@@ -10,7 +10,7 @@
 
 
     </head>
-    <body>
+    <body class="bodycolor">
     	@include('includes.header')
        <div class="container">@yield('content')
        </div>
