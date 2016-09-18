@@ -25,8 +25,8 @@
 					Posted by {{ $post->user->first_name}} on {{ $post->created_at->format('m/d/Y') }} - {{ $post->created_at->diffForHumans() }}
 				</div>
 				<div class="interaction">
-					<a href="#">Like</a> |
-					<a href="#">Dislike</a> 
+					<a href="#" class="like">Like</a> |
+					<a href="#" class="like">Dislike</a> 
 					@if(Auth:: user() == $post->user)
 					|
 					<a href="#" class="editpost">Edit</a> |
@@ -68,7 +68,7 @@
 
 <script>
 	var token = '{{ csrf_token() }}';
-	var url = '{{ route('edit') }}';
+	var urlEdit = '{{ route('edit') }}';
 </script>
 
 @endsection

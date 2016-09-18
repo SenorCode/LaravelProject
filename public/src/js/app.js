@@ -14,7 +14,7 @@ $('.post').find('.interaction').find('.editpost').on('click', function(event){
 $('#modal-save').on('click', function() {
 	$.ajax({
 		method: 'POST',
-		url: url,
+		url: urlEdit,
 		data: {body: $('#post-body').val(), postId: postId, _token:token}
 	})
 	.done(function(msg) {

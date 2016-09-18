@@ -4,9 +4,9 @@
 
     border-bottom: 1px solid #ccc;
 }
-.body header, 
+.new-post header,
 .posts header {
-	margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .posts .post {
