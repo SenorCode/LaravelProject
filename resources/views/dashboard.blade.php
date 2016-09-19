@@ -16,7 +16,7 @@
 	</section>
 	<section class="row posts">
 		<div class="col-lg-6 col-lg-offset-3">
-			<header><h3>What other people say....</h3></header>
+			<header><h3>Comments</h3></header>
 			@foreach($posts as $post)
 			<article class="post" data-postid="{{ $post->id }}">
 
@@ -25,8 +25,8 @@
 					Posted by {{ $post->user->first_name}} on {{ $post->created_at->format('m/d/Y') }} - {{ $post->created_at->diffForHumans() }}
 				</div>
 				<div class="interaction">
-					<a href="#" class="like">Like</a> |
-					<a href="#" class="like">Dislike</a> 
+					<a href="#" class="like">{{ Auth::user()->likes()->where('post_id', $post->id)->first() ?  Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ? 'You like this post': 'Like': 'Like' }} </a> |
+					<a href="#" class="like">{{ Auth::user()->likes()->where('post_id', $post->id)->first() ?  Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ? 'You don\'t like this post': 'DisLike': 'DisLike' }}</a> 
 					@if(Auth:: user() == $post->user)
 					|
 					<a href="#" class="editpost">Edit</a> |
@@ -69,6 +69,7 @@
 <script>
 	var token = '{{ csrf_token() }}';
 	var urlEdit = '{{ route('edit') }}';
+	var urlLike = '{{ route('like') }}';
 </script>
 
 @endsection

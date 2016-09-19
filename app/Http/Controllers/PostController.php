@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Post;
 
+use App\Like;
+
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
@@ -18,6 +20,7 @@ class PostController extends Controller
         $posts = Post::latest()->get();
         return view('dashboard',['posts' => $posts]);
     }
+
 
     public function postCreatePost(Request $request)
     {
@@ -35,6 +38,7 @@ class PostController extends Controller
     	}
     	return redirect()->route('dashboard')->with(['message'=>$message]);
     }
+
 
     public function getDeletePost($post_id)
     {
@@ -65,4 +69,45 @@ class PostController extends Controller
         return response()->json(['new_body'=>$post->body],200);
 
     }
+
+
+    public function postLikePost(Request $request)
+    {
+        $post_id = $request['postId'];
+        $is_Like = $request['isLike'] === 'true';
+        $update = false;
+        $post = Post::find($post_id);
+
+        if(!$post)
+        {
+            return null;
+        }
+
+        $user = Auth::user();
+        $like = $user->likes()->where('post_id', $post_id)->first();
+        
+  
+
+        if($like) {
+            $already_like = $like->like;
+            $update = true;
+            if($already_like == $is_Like) {
+                $like->delete();
+                return null;
+            }
+        } else {
+            $like = new Like();
+        }
+        $like->like = $is_Like;
+        $like->user_id = $user->id;
+        $like->post_id = $post->id;
+        if($update){
+            $likeCounter = Like::where('post_id', $post_id)->where('like', 1)->get();
+            $like->update();
+        }else {
+
+            $like->save();
+        }
+        return null;
+    }   
 }
